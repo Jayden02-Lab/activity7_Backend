@@ -1,0 +1,27 @@
+### 1. Test GET all records
+GET http://localhost:3000/api/records
+
+### 2. Test POST (Create a record)
+POST http://localhost:3000/api/records
+Content-Type: application/json
+
+{
+  "title": "Broken window",
+  "category": "Furniture",
+  "description": "The window will not close.",
+  "status": "Pending"
+}
+
+### 3. Test PUT (Update a record)
+PUT http://localhost:3000/api/records/2
+Content-Type: application/json
+
+{
+  "title": "Broken window",
+  "category": "Furniture",
+  "description": "The window has been fixed.",
+  "status": "Completed"
+}
+
+### 4. Test DELETE
+DELETE http://localhost:3000/api/records/2
