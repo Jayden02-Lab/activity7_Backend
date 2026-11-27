@@ -14,9 +14,27 @@ if (existing.c === 0) {
   const seed = fs.readFileSync(path.join(__dirname, "seed.sql"), "utf8");
   db.exec(seed);
 }
-
 const app = express();
-app.use(cors());
+
+const allowedOrigins = [
+  "http://localhost:3000",
+  "http://127.0.0.1:5500", // VS Code Live Server
+  "https://magnificent-seahorse-bf7cdb.netlify.app/" 
+];
+
+app.use(cors({
+  origin: function (origin, callback) {
+    // Allow requests with no origin (like Postman)
+    if (!origin) return callback(null, true);
+    // Allow if the origin is in our list
+    if (allowedOrigins.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  }
+}));
+
 app.use(express.json());
 
 // 2. GET / (API Guide)
