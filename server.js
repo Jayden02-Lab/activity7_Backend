@@ -18,8 +18,9 @@ const app = express();
 
 const allowedOrigins = [
   "http://localhost:3000",
-  "http://127.0.0.1:5500", // VS Code Live Server
-  "https://magnificent-seahorse-bf7cdb.netlify.app/" 
+  "http://127.0.0.1:5500",
+  "https://magnificent-seahorse-bf7cdb.netlify.app",
+  "https://fancy-kringle-e4050b.netlify.app"
 ];
 
 app.use(cors({
